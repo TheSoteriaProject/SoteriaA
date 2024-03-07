@@ -196,7 +196,7 @@ func VariableSwap(file string, warnUser bool, variables []string, variable_defin
 	}
 	defer oldFile.Close()
 
-	newFile, err := os.Create("SoteriaA/bash_analyzer/temp.sh")
+	newFile, err := os.Create("../SoteriaA/bash_analyzer/temp.sh")
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
