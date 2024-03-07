@@ -16,14 +16,14 @@ type Log struct {
 
 // StoreJsonLogs takes in the JSON data and writes it to a file so it can be read.
 func StoreJsonLogs(log_data Log) {
-	file, err := os.OpenFile("../logs/bash_log.json", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0644)
+	file, err := os.OpenFile("bash_log.json", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0644)
 	if err != nil {
 		fmt.Println("Error opening file:", err)
 		return
 	}
 	defer file.Close()
 
-	existingData, err := os.ReadFile("../logs/bash_log.json")
+	existingData, err := os.ReadFile("bash_log.json")
 	if err != nil {
 		fmt.Println("Error reading JSON from file:", err)
 		return
@@ -50,7 +50,7 @@ func StoreJsonLogs(log_data Log) {
 	jsonData = append(existingData, jsonData...)
 	jsonData = append(jsonData, ']')
 
-	if err := os.WriteFile("../logs/bash_log.json", jsonData, 0644); err != nil {
+	if err := os.WriteFile("bash_log.json", jsonData, 0644); err != nil {
 		fmt.Println("Error writing JSON to file:", err)
 		return
 	}
@@ -75,7 +75,7 @@ func JsonLogger(FileName string, LineNumber int, Line string, Issue string, Erro
 
 // DestroyJsonLog truncates already made file and deletes log(s)
 func DestroyJsonLog() error {
-	filename := "../logs/bash_log.json"
+	filename := "bash_log.json"
 	if _, err := os.Stat(filename); !os.IsNotExist(err) {
 		if err := os.Truncate(filename, 0); err != nil {
 			return err

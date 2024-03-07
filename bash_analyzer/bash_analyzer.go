@@ -196,7 +196,7 @@ func VariableSwap(file string, warnUser bool, variables []string, variable_defin
 	}
 	defer oldFile.Close()
 
-	newFile, err := os.Create("../Soteria/bash_analyzer/temp.sh")
+	newFile, err := os.Create("SoteriaA/bash_analyzer/temp.sh")
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
@@ -240,7 +240,7 @@ func CheckForHiddenInsecureCommunication(filepath string, warn_file string, warn
 	VariableSwap(filepath, warnUser, variables, variable_definitions)
 
 	// Deal with hardcoded filename
-	CheckForInsecureCommunication("../Soteria/bash_analyzer/temp.sh", filename, warnUser, warn_file, variables, variable_definitions, enableLogPrint)
+	CheckForInsecureCommunication("../SoteriaA/bash_analyzer/temp.sh", filename, warnUser, warn_file, variables, variable_definitions, enableLogPrint)
 }
 
 func CheckForInsecureCommunication(filepath string, filename string, warnUser bool, warn_file string, variables []string, variable_definitions []string, enableLogPrint bool) {
